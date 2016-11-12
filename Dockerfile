@@ -30,11 +30,11 @@ RUN apt-get update && \
     useradd -u 1000 -G users,sudo -d /home/user --shell /bin/bash -m user && \
     PASS=$(openssl rand -base64 32) && \
     echo "${PASS}\n${PASS}" | passwd user && \
-    apt-get -y remove software-properties-common \
+    apt-get -y remove software-properties-common && \
     apt-get clean && \
-    apt-get -y autoremove \
-    && apt-get -y clean \
-    && rm -rf /var/lib/apt/lists/* && \
+    apt-get -y autoremove && \
+    apt-get -y clean && \ 
+    rm -rf /var/lib/apt/lists/* && \
     echo "#! /bin/bash\n set -e\n sudo /usr/sbin/sshd -D &\n exec \"\$@\"" > /home/user/entrypoint.sh && chmod a+x /home/user/entrypoint.sh
 
 ENV LANG en_US.UTF-8
