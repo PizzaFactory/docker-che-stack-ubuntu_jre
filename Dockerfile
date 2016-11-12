@@ -13,6 +13,8 @@ MAINTAINER Masaki Muranaka <monaka@monami-ya.com>
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 RUN apt-get update && \
     apt-get -y install \
+    git \
+    subversion \
     openjdk-8-jre-headless \
     openssh-server \
     sudo \
